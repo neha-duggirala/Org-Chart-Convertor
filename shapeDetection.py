@@ -9,7 +9,7 @@ class ShapeDetector:
 		peri = cv2.arcLength(c, True)
 		approx = cv2.approxPolyDP(c, 0.04 * peri, True)
 		# if the shape is a triangle, it will have 3 vertices
-		print("len of approx",len(approx))
+		# print("len of approx",len(approx))
 		if len(approx) == 3:
 			shape = "triangle"
 		# if the shape has 4 vertices, it is either a square or
@@ -26,6 +26,6 @@ class ShapeDetector:
 		else:
 			shape = "circle"
 		# return the name of the shape
-		print(shape)
+		# print(shape)
 
 		return shape
