@@ -26,7 +26,9 @@ def contours_text(orig):
             cropped = resized[y:y + h, x:x + w]
             cv2.imshow("cropped img", cropped)
             cv2.waitKey()
-            print(img2text(cropped))
+            text = img2text(cropped)
+            # print(text)
+            recognizedText.append(text)
             cv2.drawContours(hsv, [c], -1, (0, 255, 0), 2)
             cv2.circle(hsv, (cX,cY), 7, (255, 255, 255), -1)
             cv2.putText(hsv, shape, (cX, cY), cv2.FONT_HERSHEY_SIMPLEX,
@@ -36,9 +38,11 @@ def contours_text(orig):
             
         except Exception as inst:
             print(inst)
+    print(recognizedText)
 
-path = 'Samples/input2.jpg'
-resizeShape=500
+path = 'Samples/input1-3boxes.jpg'
+recognizedText=[]
+resizeShape=600
 img = cv2.imread(path)
 print(img.shape)
 img =  cv2.resize(img, (resizeShape,resizeShape))
@@ -48,7 +52,7 @@ ratio = img.shape[0] / float(resized.shape[0])
 # ratio = 1
 sd = ShapeDetector()
 blurred = cv2.GaussianBlur(gray, (5, 5), 0)
-thresh = cv2.threshold(blurred,70, 255, cv2.THRESH_BINARY)[1] # try tweaking these parameters  (if the pixel is greater than 120 then fill that pixel with white-255)
+thresh = cv2.threshold(blurred,200, 255, cv2.THRESH_BINARY)[1] # try tweaking these parameters  (if the pixel is greater than 120 then fill that pixel with white-255)
 cv2.imshow('img',img)
 cv2.waitKey()
 cv2.imshow('blurred',blurred)
