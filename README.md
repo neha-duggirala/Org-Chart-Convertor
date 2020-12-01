@@ -9,3 +9,8 @@ An organizational chart is a diagram that shows the structure of an organization
 Propose and design a solution to scan organizational charts in different formats (PDF, MS Word and Excel, image, etc.) consisting of flowcharts and shapes like an arrow showing parent-to-child entity relationship
 Extract details like child and parent entity, ownership percentage, country, etc. from a flow-chart/diagram
 Convert the content into an Excel format
+
+## Architecture:
+
+<img src="https://github.com/neha-duggirala/Org-Chart-Convertor/blob/main/screenshots/3%20layer%20architecture.jpg" />
+<img src="https://github.com/neha-duggirala/Org-Chart-Convertor/blob/main/screenshots/system%20architecture.jpg" />
