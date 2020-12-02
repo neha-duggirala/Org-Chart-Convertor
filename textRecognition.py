@@ -1,4 +1,4 @@
-#TODO Azure OCR API
+# TODO Azure OCR API
 import numpy as np
 import cv2
 import pytesseract

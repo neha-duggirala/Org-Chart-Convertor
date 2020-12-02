@@ -28,7 +28,7 @@ def contours_text(orig):
             cv2.waitKey()
             text = img2text(cropped)
             # print(text)
-            recognizedText.append(text)
+            recognizedText.append(" ".join(text))
             cv2.drawContours(hsv, [c], -1, (0, 255, 0), 2)
             cv2.circle(hsv, (cX,cY), 7, (255, 255, 255), -1)
             cv2.putText(hsv, shape, (cX, cY), cv2.FONT_HERSHEY_SIMPLEX,
