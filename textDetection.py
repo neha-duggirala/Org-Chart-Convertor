@@ -1,6 +1,7 @@
 import cv2
 from shapeDetection import ShapeDetector
 from textRecognition import img2text
+import dataFrameCreation
 # text detection
 def contours_text(orig):
     contours, _ = cv2.findContours(orig,cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE) 
@@ -35,12 +36,13 @@ def contours_text(orig):
                 0.5, (0, 0, 0), 2)
             cv2.imshow("hsv", hsv)
             cv2.waitKey()
-            
         except Exception as inst:
             print(inst)
+    
     print(recognizedText)
 
-path = 'Samples/input1-3boxes.jpg'
+
+path = 'Samples/input1-middle.jpg'
 recognizedText=[]
 resizeShape=600
 img = cv2.imread(path)
@@ -60,3 +62,5 @@ cv2.waitKey()
 cv2.imshow('thresh',thresh)
 cv2.waitKey()
 contours_text(thresh)
+
+dataFrameCreation.writeToExcel(recognizedText)
