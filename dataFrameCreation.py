@@ -6,4 +6,4 @@ def writeToExcel(recognizedText):
     df = pd.DataFrame(textClassification.entityNameAndCountryExtraction(recognizedText))
     print(df)
 
-    df.to_excel("Samples/dataFrameOutput.xlsx",sheet_name='Sheet_name_3')
+    df.to_excel("Samples/dataFrameOutput.xlsx",sheet_name='Sheet_name_1',)

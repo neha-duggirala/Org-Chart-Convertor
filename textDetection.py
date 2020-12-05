@@ -10,6 +10,7 @@ def contours_text(orig):
     cv2.imshow('ALL',orig)
     cv2.waitKey()
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+    print("*******{0} Number of contours detected*********".format(len(contours)) )
     for c in contours:
         try:
             M = cv2.moments(c)
@@ -24,7 +25,7 @@ def contours_text(orig):
             x, y, w, h = cv2.boundingRect(c)
             # print(y,y + h, x,x + w)
             
-            cropped = resized[y:y + h, x:x + w]
+            cropped = gray[y:y + h, x:x + w]
             cv2.imshow("cropped img", cropped)
             cv2.waitKey()
             text = img2text(cropped)
@@ -42,16 +43,17 @@ def contours_text(orig):
     print(recognizedText)
 
 
-path = 'Samples/input1-middle.jpg'
+path = 'Samples/input1.jpg'
 recognizedText=[]
 resizeShape=600
 img = cv2.imread(path)
 print(img.shape)
-img =  cv2.resize(img, (resizeShape,resizeShape))
+# img =  cv2.resize(img, (resizeShape,resizeShape))
 gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
-resized = cv2.resize(gray, (resizeShape,resizeShape))
-ratio = img.shape[0] / float(resized.shape[0])
-# ratio = 1
+# resized = cv2.resize(gray, (resizeShape,resizeShape))
+# ratio = img.shape[0] / float(resized.shape[0])
+# print(ratio)
+ratio = 1.0
 sd = ShapeDetector()
 blurred = cv2.GaussianBlur(gray, (5, 5), 0)
 thresh = cv2.threshold(blurred,200, 255, cv2.THRESH_BINARY)[1] # try tweaking these parameters  (if the pixel is greater than 120 then fill that pixel with white-255)
